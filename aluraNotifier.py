@@ -16,7 +16,7 @@ def checkForDoubtsWithOutAnswer(seconds):
     while True:
         for secao, url in SECTIONS_TO_VERIFY.copy().items():
             result = urllib.request.urlopen(url)
-            print(url)
+            print('Verificando: '+url)
 
             soup = BeautifulSoup(result, 'html.parser')
 
@@ -36,14 +36,14 @@ def checkForDoubtsWithOutAnswer(seconds):
                                                              , "Alura Notifier", 3)
                 # 6 = YES
                 if (ret_value == 6):
-                    webbrowser.open(url)
+                    webbrowser.open(r"https://cursos.alura.com.br"+str(forumListItems[0].get('itemid'))) if ( (len(forumListItems)) == 1 ) else webbrowser.open(url)
                 # 2 = CANCEL or EXIT
                 elif (ret_value == 2):
                     sys.exit(0)
                 # NO
                 else:
                     SECTIONS_TO_VERIFY.pop(secao, None)
-                    print(SECTIONS_TO_VERIFY)
+                    print('Próxima verificação: '+str(SECTIONS_TO_VERIFY))
 
                 
     time.sleep(seconds)
