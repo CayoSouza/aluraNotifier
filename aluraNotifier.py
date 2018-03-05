@@ -36,7 +36,7 @@ def checkForDoubtsWithOutAnswer(seconds):
                                                              , "Alura Notifier", 3)
                 # 6 = YES
                 if (ret_value == 6):
-                    webbrowser.open(page)
+                    webbrowser.open(url)
                 # 2 = CANCEL or EXIT
                 elif (ret_value == 2):
                     sys.exit(0)
